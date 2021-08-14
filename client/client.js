@@ -1,5 +1,6 @@
 const axios = require("axios")
 const inquirer = require("inquirer");
+const { exit } = require("process");
 require("dotenv").config();
 
 
@@ -31,33 +32,37 @@ const program = async () => {
     let email;
     let password;
     let username;
+    let answers = null;
 
-    let answers = await getUserInput();
-
-    email = answers.email;
-    password = answers.password;
-    username = answers.username;
-
+    try {
+        answers = await getUserInput();
+        email = answers.email;
+        password = answers.password;
+        username = answers.username;
+    } catch {
+        console.log("Error while getting user input, try again.\n");
+        return program();
+    }
+    
   axios
   .post(process.env.END_POINT, {
     email, password, username
   })
   .then((res) => {
     console.log(res.data);
-    program();
+    return program();
   })
-  .catch((error) => {
-    console.error(error);
+  .catch((err) => {
+    console.log(err);
   })
-
 }
     
 const getUserInput = () => {
     return new Promise((resolve, reject) => {
         inquirer.prompt(questions).then(answers => {
             resolve(answers);
-          }).catch((error) => {
-            console.log(error)
+          }).catch((err) => {
+            console.log(err)
             reject(null);
         });
     })
