@@ -8,21 +8,17 @@ const twitter = async (req, res, next) => {
 
     let response;
 
-    console.log(req.body);
-
-    if (req.body.email.length === 0 || req.body.password.length === 0 || req.body.username.length === 0)
+    if (!req.body.email || !req.body.password || !req.body.username || req.body.email.trim().length === 0 || req.body.password.trim().length === 0 || req.body.username.trim().length === 0)
     {
         res.json("Missing required fields");
         return;
     }
 
-    let username = req.body.username || "dummy";
-
     //encode email and password
     let auth = 'Basic ' + Buffer.from(req.body.email + ':' + req.body.password).toString('base64');
    
     try{
-        response = await axios.get(`https://gnip-api.twitter.com/search/30day/accounts/${username}/prod/counts.json?query=from%3Atwitterdev`, {
+        response = await axios.get(`https://gnip-api.twitter.com/search/30day/accounts/${req.body.username}/prod/counts.json?query=from%3Atwitterdev`, {
               headers: {
                 Authorization: auth,
                 Authentication: auth
@@ -31,7 +27,6 @@ const twitter = async (req, res, next) => {
     } catch (e) {
         if (e.response)
         {
-            console.log(e.response.status);
             // Here is the error we get if password or ID is incorrect
             // We will get the error logs from here
             if (e.response.status === 401 || e.response.status === 403)
