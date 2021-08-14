@@ -10,7 +10,7 @@ const twitter = async (req, res, next) => {
 
     //encode email and password
     let auth = 'Basic ' + Buffer.from(req.body.email + ':' + req.body.password).toString('base64');
-
+    
     try{
         response = await axios.get(`https://gnip-api.twitter.com/search/30day/accounts/${req.body.username}/prod/counts.json?query=from%3Atwitterdev`, {
               headers: {
@@ -19,6 +19,7 @@ const twitter = async (req, res, next) => {
               }
           });
     } catch (e) {
+        console.log(e.response.data);
         if (e.response)
         {
             // Here is the error we get if password or ID is incorrect
@@ -43,7 +44,7 @@ const twitter = async (req, res, next) => {
         // if successfull, append to logs
         writeLogs(response.data);
         // send user the message
-        res.json(response.data.message);
+        res.json(response.data);
     }
 };
 

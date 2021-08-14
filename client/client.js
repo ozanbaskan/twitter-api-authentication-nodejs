@@ -30,14 +30,18 @@ let questions = [
 
 const program = async () => {
     let email;
-    let pw;
+    let password;
     let username;
 
     let answers = await getUserInput();
 
+    email = answers.email;
+    password = answers.password;
+    username = answers.username;
+
   axios
   .post(process.env.END_POINT, {
-    email, pw, username
+    email, password, username
   })
   .then((res) => {
     console.log(res.data);
