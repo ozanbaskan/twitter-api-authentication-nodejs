@@ -7,7 +7,7 @@ const writeLogs = require("../helpers/writeLogs.js").writeLogs;
 const twitter = async (req, res, next) => {
 
     let response;
-
+    
     if (!req.body.email || !req.body.password || !req.body.username || req.body.email.trim().length === 0 || req.body.password.trim().length === 0 || req.body.username.trim().length === 0)
     {
         res.json("Missing required fields");

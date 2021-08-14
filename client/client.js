@@ -25,13 +25,13 @@ let questions = [
           name: "username",
           message: "Enter your username: "
       }
-  ]
+  ];
 
 const program = async () => {
     let email;
     let password;
     let username;
-    let answers = null;
+    let answers;
 
     try {
         answers = await getUserInput();
@@ -50,8 +50,8 @@ const program = async () => {
         console.log(response.data);
         return program();
     } catch (err) {
-    console.log(err);
-  };
+        console.log(err);
+    };
 }
     
 const getUserInput = () => {
@@ -62,9 +62,8 @@ const getUserInput = () => {
             console.log(err)
             reject(null);
         });
-    })
+    });
 }
-
 
 program();
 
