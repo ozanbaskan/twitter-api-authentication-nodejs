@@ -1,6 +1,5 @@
 const axios = require("axios")
 const inquirer = require("inquirer");
-const { async } = require("rxjs");
 require("dotenv").config();
 
 
