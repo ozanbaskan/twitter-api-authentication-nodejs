@@ -9,7 +9,6 @@ console.log("This is a simple application for implementing basic authentication 
 console.log("You will be asked to enter your e-mail, password and username to get authentication.")
 console.log("==================================================================================")
 
-process.stdin.setEncoding("utf8");
 
 let questions = [
     {
