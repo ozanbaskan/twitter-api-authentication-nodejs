@@ -20,8 +20,7 @@ const twitter = async (req, res, next) => {
     try{
         response = await axios.get(`https://gnip-api.twitter.com/search/30day/accounts/${req.body.username}/prod/counts.json?query=from%3Atwitterdev`, {
               headers: {
-                Authorization: auth,
-                Authentication: auth
+                Authorization: auth
               }
           });
     } catch (e) {
