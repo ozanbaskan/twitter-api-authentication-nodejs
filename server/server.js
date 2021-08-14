@@ -38,6 +38,8 @@ const server = app.listen(process.env.PORT, () => {
     console.log("Server is online!");
 });
 
+
+// if log file is not created, end server
 if (!logCreated) {
     console.log("Log file could not be created.")
     server.close();
