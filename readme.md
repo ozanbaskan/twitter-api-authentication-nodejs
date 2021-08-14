@@ -1,4 +1,4 @@
-### This is a simple console nodejs application to get authentication from twitter api
+### This is a simple console nodejs application to get authentication from twitter for twitter enterprise APIs.
 
 - After installing dependencies with "npm i" from each directory to run this locally:
 
