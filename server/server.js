@@ -3,7 +3,7 @@ const express = require("express");
 
 
 // create log file if not exists
-let logCreated = require("./helpers/writeLogs.js").createLogIfNotExists("./logs/log.json");
+const logCreated = require("./helpers/writeLogs.js").createLogIfNotExists("./logs/log.json");
 
 const app = express();
 

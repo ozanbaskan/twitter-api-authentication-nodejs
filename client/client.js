@@ -1,6 +1,5 @@
 const axios = require("axios")
 const inquirer = require("inquirer");
-const { exit } = require("process");
 require("dotenv").config();
 
 
@@ -44,17 +43,15 @@ const program = async () => {
         return program();
     }
     
-  axios
-  .post(process.env.END_POINT, {
-    email, password, username
-  })
-  .then((res) => {
-    console.log(res.data);
-    return program();
-  })
-  .catch((err) => {
+    try {
+        const response = await axios.post(process.env.END_POINT, {
+        email, password, username
+        });
+        console.log(response.data);
+        return program();
+    } catch (err) {
     console.log(err);
-  })
+  };
 }
     
 const getUserInput = () => {
