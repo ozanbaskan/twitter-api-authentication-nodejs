@@ -43,7 +43,7 @@ const twitter = async (req, res, next) => {
         // if successfull, append to logs
         writeLogs(response.data);
         // send user the message
-        res.json(response.data);
+        res.json("Authentication is successful");
     }
 };
 
