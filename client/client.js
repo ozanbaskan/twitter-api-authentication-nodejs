@@ -3,10 +3,10 @@ const inquirer = require("inquirer");
 require("dotenv").config();
 
 
-console.log("==================================================================================")
-console.log("This is a simple application for implementing basic authentication of twitter api.")
-console.log("You will be asked to enter your e-mail, password and username to get authentication.")
-console.log("==================================================================================")
+console.log("==================================================================================");
+console.log("This is a simple application for implementing basic authentication of twitter api.");
+console.log("You will be asked to enter your e-mail, password and username to get authentication.");
+console.log("==================================================================================");
 
 
 let questions = [
