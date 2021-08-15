@@ -8,7 +8,7 @@ THREAD_NUMBER = 5
 REQUEST_PER_THREAD = 10
 
 # you can change your endpoint for your local server
-port = "4000"
+port = "3000"
 address = "http://localhost"
 
 url = address + ":" + port
