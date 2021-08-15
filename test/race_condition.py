@@ -3,7 +3,12 @@ import threading
 
 # tested for race condition to write to logs
 
-port = "3000"
+# change these to test different intensities
+THREAD_NUMBER = 5
+REQUEST_PER_THREAD = 10
+
+# you can change your endpoint for your local server
+port = "4000"
 address = "http://localhost"
 
 url = address + ":" + port
@@ -16,20 +21,20 @@ data = {
 
 
 def send_requests():
-    for i in range(10):
+    for i in range(REQUEST_PER_THREAD):
         response = requests.post(url, data=data).text
         print(response)
 
 
 threads = []
 
-for i in range(3):
+for i in range(THREAD_NUMBER):
     t = threading.Thread(target=send_requests)
     t.daemon = True
     threads.append(t)
 
-for i in range(3):
+for i in range(THREAD_NUMBER):
     threads[i].start()
 
-for i in range(3):
+for i in range(THREAD_NUMBER):
     threads[i].join()
